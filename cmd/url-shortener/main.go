@@ -6,6 +6,9 @@ import (
 	"url-shortener/internal/config"
 	"url-shortener/internal/lib/logger/sl"
 	"url-shortener/internal/storage/sqlite"
+
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 )
 
 func main() {
@@ -24,6 +27,10 @@ func main() {
 
 	_ = storage
 
+	router := chi.NewRouter()
+
+	router.Use(middleware.RequestID)
+	router.Use(middleware.Logger)
 	// TODO: init router: chi,  chi render
 
 	// TODO: run server:
