@@ -96,5 +96,4 @@ func (s *Storage) DeleteUrl(alias string) error {
 	}
 
 	return nil
-
 }
